@@ -130,6 +130,10 @@ describe('EchartsOptionsService', () => {
         },
         legend: {
           show: false,
+          itemHeight: 8,
+          textStyle: {
+            fontSize: 10,
+          },
         },
         xAxis: {
           min: timeRange.dateFrom,
@@ -280,7 +284,7 @@ describe('EchartsOptionsService', () => {
             id: dp1.__target.id + dp1.fragment + dp1.series,
             data: [[XAxisValue, -10]],
             itemStyle: { color: 'blue' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
           },
         ],
       });
@@ -309,7 +313,8 @@ describe('EchartsOptionsService', () => {
             id: dp1.__target.id + dp1.fragment + dp1.series,
             data: [[XAxisValue, -10]],
             itemStyle: { color: 'blue' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
           {
             id: dp3.__target.id + dp3.fragment + dp3.series,
@@ -318,7 +323,8 @@ describe('EchartsOptionsService', () => {
               ['2023-03-20T10:09:00.000Z', 2],
             ],
             itemStyle: { color: 'red' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
         ],
       });
@@ -334,7 +340,7 @@ describe('EchartsOptionsService', () => {
       const tooltipInnerHtml = tooltipFormatter(params, null);
       // then
       expect(tooltipInnerHtml).toBe(
-        `2023-03-20T10:10:00.000Z<br/><span style='display: inline-block; background-color: blue ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>-10<div style="font-size: 11px">2023-03-20T10:10:00.000Z</div><span style='display: inline-block; background-color: red ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>2<div style="font-size: 11px">2023-03-20T10:09:00.000Z</div>`
+        `2023-03-20T10:10:00.000Z<br/><span style='display: inline-block; background-color: blue ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>-10 C<div style="font-size: 11px">2023-03-20T10:10:00.000Z</div><span style='display: inline-block; background-color: red ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>2 C<div style="font-size: 11px">2023-03-20T10:09:00.000Z</div>`
       );
     });
 
@@ -350,25 +356,29 @@ describe('EchartsOptionsService', () => {
             id: dp1.__target.id + dp1.fragment + dp1.series,
             data: [[XAxisValue, -10]],
             itemStyle: { color: 'blue' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
           {
             id: dp2.__target.id + dp2.fragment + dp2.series + '/min',
             data: [[oneMinuteAfterXAxisValue, -10]],
             itemStyle: { color: 'blue' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
           {
             id: dp2.__target.id + dp2.fragment + dp2.series + '/max',
             data: [[oneMinuteAfterXAxisValue, 10]],
             itemStyle: { color: 'blue' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
           {
             id: dp3.__target.id + dp3.fragment + dp3.series,
             data: [[oneMinuteAfterXAxisValue, 0]],
             itemStyle: { color: 'red' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
         ],
       });
@@ -384,7 +394,7 @@ describe('EchartsOptionsService', () => {
       const tooltipInnerHtml = tooltipFormatter(params, null);
       // then
       expect(tooltipInnerHtml).toBe(
-        `2023-03-20T10:10:00.000Z<br/><span style='display: inline-block; background-color: blue ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>-10<div style="font-size: 11px">2023-03-20T10:10:00.000Z</div>`
+        `2023-03-20T10:10:00.000Z<br/><span style='display: inline-block; background-color: blue ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>-10 C<div style="font-size: 11px">2023-03-20T10:10:00.000Z</div>`
       );
     });
 
@@ -397,13 +407,15 @@ describe('EchartsOptionsService', () => {
             id: dp1.__target.id + dp1.fragment + dp1.series + '/min',
             data: [[XAxisValue, -10]],
             itemStyle: { color: 'blue' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
           {
             id: dp1.__target.id + dp1.fragment + dp1.series + '/max',
             data: [[XAxisValue, 10]],
             itemStyle: { color: 'blue' },
-            name: 'c8y_Temperature → T',
+            datapointLabel: 'c8y_Temperature → T',
+            datapointUnit: 'C',
           },
         ],
       });
@@ -419,7 +431,7 @@ describe('EchartsOptionsService', () => {
       const tooltipInnerHtml = tooltipFormatter(params, null);
       // then
       expect(tooltipInnerHtml).toBe(
-        `2023-03-20T10:10:00.000Z<br/><span style='display: inline-block; background-color: blue ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>-10 — 10<div style="font-size: 11px">2023-03-20T10:10:00.000Z</div>`
+        `2023-03-20T10:10:00.000Z<br/><span style='display: inline-block; background-color: blue ; height: 12px; width: 12px; border-radius: 50%; margin-right: 4px;'></span><strong>c8y_Temperature → T: </strong>-10 — 10 C<div style="font-size: 11px">2023-03-20T10:10:00.000Z</div>`
       );
     });
   });
