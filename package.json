@@ -114,12 +114,19 @@
           "module": "DatapointsGraphWidgetModule",
           "path": "./src/datapoints-graph/datapoints-graph-widget.module.ts",
           "description": "Adds data points graph widget to the shell application"
+        },
+        {
+          "name": "Notifications2",
+          "module": "Notifications2ManagerModule",
+          "path": "./src/notifications2-manager/notifications2-manager.module.ts",
+          "description": "Adds the notifications2 manager"
         }
       ],
       "remotes": {
         "sag-pkg-community-plugins": [
           "ExampleWidgetPluginModule",
-          "DatapointsGraphWidgetModule"
+          "DatapointsGraphWidgetModule",
+          "Notifications2ManagerModule"
         ]
       },
       "copy": [
